@@ -64,7 +64,7 @@ Step 2: Use the following command to create a backup of this package
 adb backup -f backup.ab -apk com.searchlab.backupagenttest
 ```
 
-Step 3 (optional): If you want to examine the backup archive just created, use the ABE tool [1]:
+Step 3 (optional): If you want to examine the backup archive just created, use the [ABE](https://github.com/nelenkov/android-backup-extractor) tool:
 ```
 java -jar d:\tools\abe\android-backup-extractor-20140630-bin\abe.jar unpack backup.ab backup.tar
 ```
@@ -76,7 +76,7 @@ Step 4: Use the following command to restore the archive:
 adb restore backup.ab
 ```
 
-Step 5: Verify that the Wifi Test application was installed.
+Step 5: Verify that Wifi Test application was indeed installed:
 ![ADB Backup Injection, injected Application](/relative/path/to/img.jpg?raw=true "ADB Backup Injection, injected Application")
 
 CVE
@@ -97,6 +97,3 @@ At first, Google did not acknowledge the issue being security relevant. Later th
 2015-06-02: Google promised further info in a few days, but it never arrived
 
 
-References
-----------
-1. [ABE](https://github.com/nelenkov/android-backup-extractor)
