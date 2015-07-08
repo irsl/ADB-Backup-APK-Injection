@@ -81,7 +81,7 @@ Step 4: Use the following command to restore the archive:
 adb restore backup.ab
 ```
 
-Since the backup.ap file already contains the injected application, it will be restored (installed) as well.
+Since the backup.ab file already contains the injected application, it will be restored (installed) as well.
 
 Step 5: Verify that Wifi Test application was indeed installed.
 The application runs with android.permission.CHANGE_WIFI_STATE and android.permission.ACCESS_WIFI_STATE permissions to demonstrate that privilege escalation was also possible.
