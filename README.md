@@ -71,6 +71,8 @@ adb restore backup.ab
 Step 5: Verify that Wifi Test application was indeed installed.
 The application runs with android.permission.CHANGE_WIFI_STATE and android.permission.ACCESS_WIFI_STATE permissions to demonstrate that privilege escalation was also possible.
 
+![ADB Backup Injection, injected application](https://raw.githubusercontent.com/irsl/ADB-Backup-APK-Injection/master/android-backup-injection-wifitest.png "ADB Backup Injection, injected application")
+
 CVE
 ---
 The ID CVE-2014-7952 was assigned to this vulnerability.
