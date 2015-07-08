@@ -46,7 +46,7 @@ In this repository you can find an application along with it's source code which
 It was tested on Android 4.4.4 and Android 5.1.1.
 
 Step 1: Install ADB_Backup_Injection.apk (com.searchlab.backupagenttest):
-![ADB Backup Injection, custom BackupAgent](/relative/path/to/img.jpg?raw=true "ADB Backup Injection, custom BackupAgent")
+![ADB Backup Injection, custom BackupAgent](/android-apk-injection-backupagenttest.jpg?raw=true "ADB Backup Injection, custom BackupAgent")
 
 This application *does not require any permissions*.
 
@@ -67,8 +67,8 @@ Step 4: Use the following command to restore the archive:
 adb restore backup.ab
 ```
 
-Step 5: Verify that Wifi Test application was indeed installed:
-![ADB Backup Injection, injected Application](/relative/path/to/img.jpg?raw=true "ADB Backup Injection, injected Application")
+Step 5: Verify that Wifi Test application was indeed installed.
+The application runs with android.permission.CHANGE_WIFI_STATE and android.permission.ACCESS_WIFI_STATE permissions to demonstrate that privilege escalation was also possible.
 
 CVE
 ---
