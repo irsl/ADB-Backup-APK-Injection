@@ -70,7 +70,7 @@ adb backup -f backup.ab -apk com.searchlab.backupagenttest
 
 Step 3 (optional): If you want to examine the backup archive just created, use the [ABE](https://github.com/nelenkov/android-backup-extractor) tool:
 ```
-java -jar d:\tools\abe\android-backup-extractor-20140630-bin\abe.jar unpack backup.ab backup.tar
+java -jar abe.jar unpack backup.ab backup.tar
 ```
 ![ADB Backup Injection, the tar file with the injected content](https://raw.githubusercontent.com/irsl/ADB-Backup-APK-Injection/master/android-backup-injection-tar-file.png "ADB Backup Injection, the tar file with the injected content")
 
