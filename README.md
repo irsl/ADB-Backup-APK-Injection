@@ -76,7 +76,7 @@ The ID CVE-2014-7952 was assigned to this vulnerability.
 
 Affected Versions
 -----------------
-As of today, 2015-07-08, all Android versions are affected, including Android L.
+As of today (2015-07-08), all Android versions are affected, including Android L.
 
 Timeline
 --------
