@@ -4,7 +4,7 @@ Android ADB backup APK Injection POC. Discovered by Imre Rad (SEARCH-LAB Ltd.), 
 What is ADB backup/restore?
 ---------------------------
 The Android Operating System offers a backup/restore mechanism of installed packages through the ADB utility.
-By default, full backup of applications including the private files stored in /data is performed, but this behaviour can be customized by implementing a BackupAgent (http://developer.android.com/reference/android/app/backup/BackupAgent.html) class. This way applications can feed the backup process with custom files and data.
+By default, full backup of applications including the private files stored in /data is performed, but this behaviour can be customized by implementing a [BackupAgent](http://developer.android.com/reference/android/app/backup/BackupAgent.html) class. This way applications can feed the backup process with custom files and data.
 The backup file created is a simple compressed tar archive with some Android specific headers. Optional encryption is also possible.
 
 APK injection vulnerability
