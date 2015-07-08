@@ -89,11 +89,10 @@ As of today, 2015-07-08, all Android versions are affected, including Android L.
 
 Timeline
 --------
-At first, Google did not acknowledge the issue being security relevant. Later they kept requesting more time for further investigation, but the bug was still not addressed. The most important milestones of the issue are listed in the next lines:
+SEARCH-LAB Ltd. responsibly reported this threat to the Android security team. At first, Google did not acknowledge the issue being security relevant. Later they kept requesting more time for further investigation, but the bug was still not addressed. The most important milestones of the issue are listed in the next lines:
 
 2014-07-14: The vulnerability was disclosed to the Android security team
-2014-07-28: Google refused to treat the issue as a potential threat, but requests to hold off publishing it
-2014-10-15: Google answered that it did not get fixed in the L release and keeps requesting to hold off publishing it
+2014-07-28: Google refused to treat the issue as a potential threat, but requested to hold off publishing it
+2014-10-15: Google answered that it did not get fixed in the L release and kept requesting to hold off publishing it
 2015-06-02: Google promised further info in a few days, but it never arrived
-
 
