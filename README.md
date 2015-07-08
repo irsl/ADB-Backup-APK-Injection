@@ -46,7 +46,7 @@ In this repository you can find an application along with it's source code which
 It was tested on Android 4.4.4 and Android 5.1.1.
 
 Step 1: Install ADB_Backup_Injection.apk (com.searchlab.backupagenttest):
-![ADB Backup Injection, custom BackupAgent](/android-backup-injection-backupagenttest?raw=true "ADB Backup Injection, custom BackupAgent")
+![ADB Backup Injection, custom BackupAgent](https://raw.githubusercontent.com/irsl/ADB-Backup-APK-Injection/master/android-backup-injection-backupagenttest.png "ADB Backup Injection, custom BackupAgent")
 
 This application *does not require any permissions*.
 
