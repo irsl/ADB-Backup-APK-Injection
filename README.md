@@ -1,5 +1,5 @@
 # ADB-Backup-APK-Injection
-Android ADB backup APK Injection vulnerabilty discovered by Imre Rad (SEARCH-LAB Ltd.), Hungary.
+Android ADB backup APK injection vulnerabilty discovered by and POC created by Imre Rad, SEARCH-LAB Ltd., Hungary.
 
 What is ADB backup/restore?
 ---------------------------
@@ -45,6 +45,10 @@ try {
 }
 ```
 
+Who is affected?
+----------------
+The vulnerability resides in the backup mechanism of the Android operating system. Anyone using adb for creating restoring backups of their handsets might be affected. One could think that command line applications are used by geeks or programmers only, but not necessarily, there are Windows GUI applications which rely on the same technology behind the scenes when creating backups or restoring them.
+
 Proof of Concept
 ----------------
 In this repository you can find an application along with it's source code which can demonstrate the vulnerabilty.
@@ -73,6 +77,8 @@ Step 4: Use the following command to restore the archive:
 ```
 adb restore backup.ab
 ```
+
+Since the backup.ap file already contains the injected application, it will be restored (installed) as well.
 
 Step 5: Verify that Wifi Test application was indeed installed.
 The application runs with android.permission.CHANGE_WIFI_STATE and android.permission.ACCESS_WIFI_STATE permissions to demonstrate that privilege escalation was also possible.
