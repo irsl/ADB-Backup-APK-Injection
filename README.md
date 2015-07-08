@@ -86,6 +86,13 @@ Timeline
 SEARCH-LAB Ltd. responsibly reported this threat to the Android security team. At first, Google did not acknowledge the issue being security relevant. Later they kept requesting more time for further investigation, but the bug was still not addressed. The most important milestones of the issue are listed in the next lines:
 
 2014-07-14: The vulnerability was disclosed to the Android security team
+
 2014-07-28: Google refused to treat the issue as a potential threat, but requested to hold off publishing it
-2014-10-15: Google answered that it did not get fixed in the L release and kept requesting to hold off publishing it
+
+2014-10-13: Asked Google for status update and requested a mug for being patient
+
+2014-10-15: Google answered that it did not get fixed in the L release and kept requesting to hold off publishing it. Got a promise about asking around for a mug
+
+(Several more ping-pong emails without any new info, neither a mug)
+
 2015-06-02: Google promised further info in a few days, but it never arrived
