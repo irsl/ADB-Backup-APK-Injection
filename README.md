@@ -66,7 +66,7 @@ Step 2: Use the following command to create a backup of this package
 adb backup -f backup.ab -apk com.searchlab.backupagenttest
 ```
 
-(You could create a full system backup as well, the exploit will be still successful.)
+(You could create a full system backup as well, the exploit would be still successful.)
 
 Step 3 (optional): If you want to examine the backup archive just created, use the [ABE](https://github.com/nelenkov/android-backup-extractor) tool:
 ```
