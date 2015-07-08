@@ -1,5 +1,5 @@
 # ADB-Backup-APK-Injection
-Android ADB backup APK injection vulnerabilty discovered by and POC created by Imre Rad, SEARCH-LAB Ltd., Hungary.
+Android ADB backup APK injection vulnerability discovered by and POC created by Imre Rad, SEARCH-LAB Ltd., Hungary.
 
 What is ADB backup/restore?
 ---------------------------
