@@ -1,5 +1,5 @@
 # ADB-Backup-APK-Injection
-Android ADB backup APK Injection POC
+Android ADB backup APK Injection POC. Discovered by Imre Rad (SEARCH-LAB Ltd.), Hungary.
 
 What is ADB backup/restore?
 ---------------------------
