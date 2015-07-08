@@ -48,6 +48,7 @@ try {
 Who is affected?
 ----------------
 The vulnerability resides in the backup mechanism of the Android operating system. Anyone using adb for creating restoring backups of their handsets might be affected. One could think that command line applications are used by geeks or programmers only, but not necessarily, there are Windows GUI applications which rely on the same technology behind the scenes when creating backups or restoring them.
+The malware might come from an innocent looking game without any suspicion as it claims to need no permissions at all. As soon as backup was created, the archive is infected.
 
 Proof of Concept
 ----------------
@@ -64,6 +65,8 @@ Step 2: Use the following command to create a backup of this package
 ```
 adb backup -f backup.ab -apk com.searchlab.backupagenttest
 ```
+
+(You could create a full system backup as well, the exploit will be still successful.)
 
 Step 3 (optional): If you want to examine the backup archive just created, use the [ABE](https://github.com/nelenkov/android-backup-extractor) tool:
 ```
