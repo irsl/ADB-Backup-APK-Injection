@@ -9,7 +9,7 @@ The backup file created is a simple compressed tar archive with some Android spe
 
 APK injection vulnerability
 ---------------------------
-The backup manager, which invokes the custom BackupAgent's does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application (since it is part of the backup archive and the system believes it is authentic).
+The backup manager, which invokes the custom BackupAgent does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application (since it is part of the backup archive and the system believes it is authentic).
 
 The Backup Manager can be exploited through simple reflection to inject the arbitrary additional APK:
 
@@ -47,7 +47,7 @@ try {
 
 Who is affected?
 ----------------
-The vulnerability resides in the backup mechanism of the Android operating system. Anyone using adb for creating restoring backups of their handsets might be affected. One could think that command line applications are used by geeks or programmers only, but not necessarily, there are Windows GUI applications which rely on the same technology behind the scenes when creating backups or restoring them.
+The vulnerability resides in the backup mechanism of the Android operating system. Anyone using adb for creating and restoring backups of their handsets might be affected. One could think that command line applications are used by geeks or programmers only, but not necessarily, there are Windows GUI applications which rely on the same technology behind the scenes when creating backups or restoring them.
 The malware might come from an innocent looking game without any suspicion as it claims to need no permissions at all. As soon as backup was created, the archive is infected.
 
 Proof of Concept
