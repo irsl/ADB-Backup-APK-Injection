@@ -104,7 +104,7 @@ SEARCH-LAB Ltd. responsibly reported this threat to the Android security team. A
 
 2014-07-28: Google refused to treat the issue as a potential threat, but requested to hold off publishing it
 
-2014-10-13: Asked Google for status update and requested a mug for being patient
+2014-10-13: Asked Google for status update and requested a cup or a mug for being patient
 
 2014-10-15: Google answered that it did not get fixed in the L release and kept requesting to hold off publishing it. Got a promise about asking around for a mug
 
