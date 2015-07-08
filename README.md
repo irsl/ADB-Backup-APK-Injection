@@ -1,5 +1,5 @@
 # ADB-Backup-APK-Injection
-Android ADB backup APK Injection POC. Discovered by Imre Rad (SEARCH-LAB Ltd.), Hungary.
+Android ADB backup APK Injection vulnerabilty discovered by Imre Rad (SEARCH-LAB Ltd.), Hungary.
 
 What is ADB backup/restore?
 ---------------------------
@@ -10,7 +10,7 @@ The backup file created is a simple compressed tar archive with some Android spe
 APK injection vulnerability
 ---------------------------
 The backup manager, which invokes the custom BackupAgent's does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. Upon restoration of the backup archive, the system installs the injected, additional application.
-The Backup Manager can be exploited through simple reflection:
+The Backup Manager can be exploited through simple reflection to inject the arbitrary additional APK:
 
 ```
 	  String packageName = "com.searchlab.wifitest"; // package name of the application to be injected
