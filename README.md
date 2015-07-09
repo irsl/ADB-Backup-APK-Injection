@@ -9,7 +9,7 @@ The backup file created is a simple compressed tar archive with some Android spe
 
 APK injection vulnerability
 ---------------------------
-The backup manager, which invokes the custom BackupAgent does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. **The BackupAgent needs no Android permissions.** Upon restoration of the backup archive, the system installs the injected, additional application (since it is part of the backup archive and the system believes it is authentic) with **escalated priviliges**.
+The backup manager, which invokes the custom BackupAgent does not filter the data stream returned by the applications. While a BackupAgent is being executed during the backup process, it is able to inject additional applications (APKs) into the backup archive without the user's consent. **The BackupAgent needs no Android permissions.** Upon restoration of the backup archive, the system installs the injected, additional application (since it is part of the backup archive and the system believes it is authentic) with **escalated privileges**.
 
 The Backup Manager can be exploited through simple reflection to inject the arbitrary additional APK:
 
