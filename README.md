@@ -113,3 +113,8 @@ SEARCH-LAB Ltd. responsibly reported this threat to the Android security team. A
 ...Few more ping-pong emails periodically without any new info (neither a mug)
 
 2015-06-02: Google promised further info in a few days, but it never arrived
+
+
+Links
+-----
+http://www.search-lab.hu/about-us/news/110-android-adb-backup-apk-injection-vulnerability
